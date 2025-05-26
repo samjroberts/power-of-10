@@ -39,7 +39,7 @@ def search_athletes(firstname=None, surname=None, club=None):
     results = soup.find('div', {'id': 'cphBody_pnlResults'}).find_all('tr')
     
     if 'cphBody_lblResultsErrorMessage' in str(results[0]):
-        raise BroadQueryError(results[0].text)
+        raise Exception("No athletes found for search query")
 
     list_of_athletes = []
     for r in results[1:-1]:
@@ -54,8 +54,8 @@ def search_athletes(firstname=None, surname=None, club=None):
                 'club': row[6].text,
                 'athlete_id': str(row[7]).split('"')[3].split('=')[1]})
 
-    if list_of_athletes == []:
-        raise QueryError('No athletes found. Use broader search terms or amend your queries.')
+    # if list_of_athletes == []:
+    #     raise QueryError('No athletes found. Use broader search terms or amend your queries.')
 
     return list_of_athletes
 
