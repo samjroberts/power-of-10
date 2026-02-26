@@ -11,5 +11,7 @@ print(df)
 # Generate charts...
 run_club.generate_age_sex_barchart(df)
 run_club.generate_boxplot(df)
+run_club.generate_performance_level_chart(df)
+run_club.generate_sex_split_performance_boxplot(df)
 
 # parkrun.get_results(club_num="947")
